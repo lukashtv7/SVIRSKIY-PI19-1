@@ -1,0 +1,100 @@
+{% extends '../base.html' %}
+
+{% block title %}
+    {{ machine.name }}
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="product__content">
+        <div class="content__config">
+            <div class="model">
+                <h1>{{ machine.name }}</h1>
+                <a href="" rel="photo">
+                    <img src="{{ machine.image.url }}" class="img">
+                </a>
+                <div class="price"> <span class="ot">цена от  </span>{{ machine.price }}<span class="rub">     Рублей</span>
+                </div>
+                <a href="{% url 'buy' %}" class="button blue"><span class="ico"></span>Купить</a>
+            </div>
+            <div class="ttx">
+                <div class="table">
+                    <table cellpadding="1" cellspacing="1">
+                        <tbody>
+                            <tr class="head">
+                                <td colspan="2">Технические характеристики</td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>Колесная формула</td>
+                                <td>{{ machine.wheels_formula }}</td>
+                            </tr>
+                            <tr>
+                                <td>Снаряженная масса</td>
+                                <td>{{ machine.curb_weight }} т</td>
+                            </tr>
+                            <tr>
+                                <td>Экипаж</td>
+                                <td>{{ machine.crew }} чел</td>
+                            </tr>
+                            <tr>
+                                <td>Пассажиры</td>
+                                <td>{{ machine.passengers }} чел</td>
+                            </tr>
+                            <tr>
+                                <td>Защита</td>
+                                <td>{{ machine.armor }}мм</td>
+                            </tr>
+                            <tr>
+                                <td>Двигатель</td>
+                                <td>{{ machine.engine }}</td>
+                            </tr>
+                            <tr>
+                                <td>Мощность</td>
+                                <td>{{ machine.power }} лс</td>
+                            </tr>
+                            <tr>
+                                <td>Трансмиссия</td>
+                                <td>{{ machine.transmission }}</td>
+                            </tr>
+                            <tr>
+                                <td>Шины</td>
+                                <td>{{ machine.buses }}</td>
+                            </tr>
+                            <tr>
+                                <td>Подвеска</td>
+                                <td>{{ machine.suspension }}</td>
+                            </tr>
+                            <tr>
+                                <td>Длина</td>
+                                <td>{{ machine.length }} мм</td>
+                            </tr>
+                            <tr>
+                                <td>Ширина</td>
+                                <td>{{ machine.width }} мм</td>
+                            </tr>
+                            <tr>
+                                <td>Высота</td>
+                                <td>{{ machine.height }} мм</td>
+                            </tr>
+                            <tr>
+                                <td>Скорость по шоссе</td>
+                                <td>более {{ machine.speed }} км/ч</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="content__descr">
+            <div class="text">
+                <h4>Описание</h4>
+                {{ machine.description }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

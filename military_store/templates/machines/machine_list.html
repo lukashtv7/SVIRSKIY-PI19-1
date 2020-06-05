@@ -1,0 +1,35 @@
+{% extends '../base.html' %}
+{% block title %}Каталог машин{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="catalog">
+            {% for machine in machine_list %}
+            <div class="catalog__item">
+                <a href="{{ machine.get_absolute_url }}" class="lnk">
+                    <img src="{{ machine.image.url }}" title="" alt="">
+                </a>
+                <div class="info">
+                    <div class="info-title">{{ machine.name }}</div>
+                    <div class="info-row">
+                        <span class="bold">Двигатель:</span> <span class="italic">{{ machine.engine }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="bold">Мощность:</span> <span class="italic">{{ machine.power }} лс</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="bold">Скорость по шоссе:</span> <span class="italic">{{ machine.speed }} км/ч</span>
+                    </div>
+                </div>
+                <div class="price">
+                    <span>цена от {{ machine.price }}</span> <span class="rub">Рублей</span>
+                </div>
+                <div class="btn">
+                    <a href="{{ machine.get_absolute_url }}" class="button yellow">Подробнее</a>
+                    <a href="{% url 'buy' %}" class="button blue">Купить</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

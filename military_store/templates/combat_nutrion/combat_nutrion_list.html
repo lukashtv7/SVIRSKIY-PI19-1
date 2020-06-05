@@ -1,0 +1,32 @@
+{% extends '../base.html' %}
+{% block title %}Боепитание{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="catalog">
+            {% for product in products %}
+            <div class="catalog__item">
+                <a href="{{ product.get_absolute_url }}" class="lnk">
+                    <img src="{{ product.image.url }}" title="" alt="">
+                </a>
+                <div class="info">
+                    <div class="info-title">{{ product.name }}</div>
+                    <div class="info-row">
+                        <span class="bold">Страна производитель:</span> <span class="italic">{{ product.country }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="bold">Вес:</span> <span class="italic">{{ product.weight }} грамм</span>
+                    </div>
+                </div>
+                <div class="price">
+                    <span>цена от {{ product.price }}</span> <span class="rub">Рублей</span>
+                </div>
+                <div class="btn">
+                    <a href="{{ product.get_absolute_url }}" class="button yellow">Подробнее</a>
+                    <a href="{% url 'buy' %}" class="button blue">Купить</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

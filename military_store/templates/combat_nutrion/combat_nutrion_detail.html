@@ -1,0 +1,53 @@
+{% extends '../base.html' %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="product__content">
+        <div class="content__config">
+            <div class="model">
+                <h1>{{ product.name }}</h1>
+                <a href="" rel="photo">
+                    <img src="{{ product.image.url }}" class="img">
+                </a>
+                <div class="price"> <span class="ot">цена от  </span>{{ product.price }}<span class="rub">     Рублей</span>
+                </div>
+                <a href="{%  url 'buy' %}" class="button blue"><span class="ico"></span>Купить</a>
+            </div>
+            <div class="ttx">
+                <div class="table">
+                    <table cellpadding="1" cellspacing="1">
+                        <tbody>
+                            <tr class="head">
+                                <td colspan="2">Характеристики</td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                            <tr>
+                                <td>Страна производитель</td>
+                                <td>{{ product.country }}</td>
+                            </tr>
+                            <tr>
+                                <td>Вес</td>
+                                <td>{{ product.weight }} Кг</td>
+                            </tr>
+                       </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="content__descr">
+            <div class="text">
+                <h4>Описание</h4>
+                {{ product.description }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

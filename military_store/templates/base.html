@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Красная звезда{% endblock title %}</title>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">
+                <a href="/">
+                    <img src="{% static 'images/logo.png' %}" alt="">
+                </a>
+            </div>
+            <div class="header__title">
+                Красная<p>звезда</p>
+            </div>
+            <div class="header__work-time">
+                Работаем <p>с 00:01 до</p> <p>24:59</p>
+            </div>
+            <div class="header__contacts">
+                {% if user.is_authenticated %}
+                    Здравствуйте, {{ user.username }}!
+                    <a href="/logout">Выйти</a>
+                {% else %}
+                    <a href="/login">Войдите</a> или <a href="/register">зарегистрируйтесь.</a>
+                {% endif %}
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="{% url 'machine_list' %}" class="nav__link">Техника</a>
+            <a href="{% url 'combat_nutrion_list' %}" class="nav__link">Боепитание</a>
+            <a href="" class="nav__link">Питание</a>
+            <a href="" class="nav__link">Пиво</a>
+            <a href="https://www.youtube.com/channel/UCWnNKC1wrH_NXAXc5bhbFnA" class="nav__link">Канал дмитрия пучкова</a>
+        </nav>
+    </div>
+</header>
+
+{% block content %}
+{% endblock content%}
+
+</body>
+</html>
